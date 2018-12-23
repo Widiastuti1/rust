@@ -459,6 +459,7 @@ impl<'a> Builder<'a> {
                 dist::Rls,
                 dist::Rustfmt,
                 dist::Clippy,
+                dist::Miri,
                 dist::LlvmTools,
                 dist::Lldb,
                 dist::Extended,
@@ -471,6 +472,7 @@ impl<'a> Builder<'a> {
                 install::Rls,
                 install::Rustfmt,
                 install::Clippy,
+                install::Miri,
                 install::Analysis,
                 install::Src,
                 install::Rustc
