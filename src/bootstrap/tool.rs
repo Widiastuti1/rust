@@ -93,6 +93,7 @@ impl Step for ToolBuild {
                 | "rls"
                 | "cargo"
                 | "clippy-driver"
+                | "miri"
                 => {}
 
                 _ => return,
@@ -228,6 +229,7 @@ pub fn prepare_tool_cargo(
         if path.ends_with("cargo") ||
             path.ends_with("rls") ||
             path.ends_with("clippy") ||
+            path.ends_with("miri") ||
             path.ends_with("rustfmt")
         {
             cargo.env("LIBZ_SYS_STATIC", "1");
@@ -602,7 +604,7 @@ tool_extended!((self, builder),
         });
     };
     Miri, miri, "src/tools/miri", "miri", {};
-    CargoMiri, clippy, "src/tools/miri", "cargo-miri", {
+    CargoMiri, miri, "src/tools/miri", "cargo-miri", {
         // Miri depends on procedural macros (serde), which requires a full host
         // compiler to be available, so we need to depend on that.
         builder.ensure(compile::Rustc {
